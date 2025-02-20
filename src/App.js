@@ -6,7 +6,7 @@ import "../src/assets/styles/app.scss";
 import "react-datepicker/dist/react-datepicker.css";
 import './firebase';
 
-function App() {
+function App() { 
   return (
     <div className="App">
       <div className="container">
