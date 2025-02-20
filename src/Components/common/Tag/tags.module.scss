@@ -1,0 +1,21 @@
+.tag {
+  font-size: 13px;
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  &.InActive {
+    background-color: rgba(239, 180, 41, 0.262);
+    border: 1px solid rgb(239, 179, 41);
+    color: rgb(204, 147, 13);
+  }
+  &.Active {
+    background-color: #75c31e40;
+    border: 1px solid #75c31e;
+    color: #64a816;
+  }
+  &.Blocked {
+    background-color: #f6727230;
+    border: 1px solid #f67272;
+    color: #e05555;
+  }
+}

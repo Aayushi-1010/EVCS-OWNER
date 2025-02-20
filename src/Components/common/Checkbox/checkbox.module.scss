@@ -1,0 +1,34 @@
+.checkBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  width: 20px;
+  border: 1px solid var(--border-grey-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  svg {
+    color: transparent;
+  }
+  &:hover {
+    box-shadow: 0 0 0 2px var(--primary-color-20);
+    border: 1px solid var(--primary-color);
+  }
+  &.active {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-color-20);
+    border: 1px solid var(--primary-color);
+    svg {
+      color: var(--white);
+    }
+  }
+}
+
+.text {
+  font-size: 13px;
+  margin-left: 5px;
+  font-weight: 300;
+  color: var(--placeholder-color);
+  user-select: none;
+}

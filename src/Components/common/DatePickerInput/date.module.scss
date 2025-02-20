@@ -1,0 +1,72 @@
+.date-picker {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 30px;
+
+  p {
+    margin: 0 0 5px;
+    font-size: 13px;
+  }
+
+  input {
+    opacity: 1;
+    border: none;
+    outline: none;
+    width: calc(60% + 83px);
+    padding: 7px;
+    border: 1px solid var(--border-grey-color);
+    border-radius: 5px;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
+    box-sizing: border-box;
+
+    &.error {
+      border: 1px solid var(--error-color);
+    }
+
+    &:focus {
+      border: 1px solid var(--primary-color);
+    }
+
+    &::placeholder {
+      color: var(--border-grey-color);
+    }
+  }
+
+  .error-message {
+    position: absolute;
+    bottom: 5px;
+    height: 13px;
+    font-size: 11px;
+    color: #fff;
+    margin-left: 100px;
+    align-self: start;
+    background-color: var(--error-bg-color);
+    padding: 4px 10px;
+    border-radius: 5px;
+    width: max-content;
+    box-shadow: 0px 5px 15px -2px var(--error-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s linear;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  svg {
+    position: absolute;
+    font-size: 23px;
+    right: 123px;
+    z-index: -1;
+    color: var(--border-grey-color);
+
+    &.error {
+      color: var(--error-color);
+    }
+  }
+}

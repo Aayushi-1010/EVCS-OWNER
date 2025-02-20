@@ -1,0 +1,70 @@
+.status-tag {
+    display: flex;
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    margin: 0 auto;
+    position: relative;
+
+    &.completed {
+        background-color: #38c974a8;
+    }
+
+    &.upcoming {
+        background-color: #f39c12;
+    }
+
+    &.in-progress {
+        background-color: #e74c3c;
+
+        &::before {
+            background-color: rgba(#e74c3c, 0.5);
+        }
+    }
+
+    &.today-payout {
+        background-color: var(--primary-color);
+
+        &::before {
+            background-color: var(--primary-color-50);
+        }
+    }
+
+    &.remaining-payout {
+        background-color: #9b59b6;
+
+        &::before {
+            background-color: rgba(#9b59b6, 0.5);
+        }
+    }
+
+    &.in-progress,
+    &.today-payout,
+    &.remaining-payout {
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+
+        &::before {
+            content: "";
+            position: absolute;
+            height: 21px;
+            width: 21px;
+            top: -3px;
+            left: -3px;
+            border-radius: 50%;
+            animation: zooming 1.5s ease-in-out infinite;
+        }
+    }
+}
+
+@keyframes zooming {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    100% {
+        transform: scale(2, 2);
+        background-color: transparent;
+    }
+}
