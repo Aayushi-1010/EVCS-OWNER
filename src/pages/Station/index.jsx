@@ -39,7 +39,6 @@ const Station = () => {
         col8: item.closeTime,
         col9: (
           <div className="flex align-items--center justify-content--center gap--15">
-            
             <CiEdit
               style={{ height: 22, width: 22 }}
               onClick={() => {
