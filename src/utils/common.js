@@ -1,6 +1,5 @@
 import isEmpty from "lodash/isEmpty";
 import queryString from "query-string";
-
 import { API_CONFIG } from "../constants/constant";
 
 export const getUrl = (url, params = {}) => {
