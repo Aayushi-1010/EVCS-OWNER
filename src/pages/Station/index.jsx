@@ -8,7 +8,7 @@ import { Form, Image, Input, Select } from "antd";
 import { toast } from "react-toastify";
 import useFirebaseContext from "../../hooks/firebase";
 import { ALL_CITIES, CHARGING_PLUGS } from "../../constant";
-import { useSelector } from "react-redux";  
+import { useSelector } from "react-redux";
 
 const Station = () => {
   const [settingData, setSettingData] = useState([]);
