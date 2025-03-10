@@ -21,11 +21,15 @@ const BookedSlots = () => {
     try {
       const userId = data.userDetails.id;
       const stationId = data.stationDetails.id;
+      // console.log("PaymentIntentId : ",)
       delete data["userDetails"];
       await updateDocument(`users/${userId}/booking`, data.id, {
         ...data,
         status: "cancelled",
+        payment: "refunded",
       });
+      console.log(data.paymentIntentId);
+
       const querySnapshot = await getDocuments("stations");
       const result = querySnapshot.docs.find((doc) => doc.id === stationId);
       const STATION_DATA = result.data();
@@ -48,7 +52,32 @@ const BookedSlots = () => {
       });
       toast.success(`Slot Booking Cancelled Successful`);
       console.log("ownerData",ownerData)
-      fetchSlotsBookingDataByUsers();
+      await fetchSlotsBookingDataByUsers();
+      // console.log('paymentIntentId..................',data.paymentIntentId);
+      // console.log('price..................',data.price);
+
+
+      if (data.paymentIntentId) {
+        const response = await fetch('http://localhost:3000/create-refund', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            payment_intent: data.paymentIntentId,
+          }),
+        });
+  
+        console.log('response',response);
+        
+        const responseData = await response.json();
+  
+        if (response.ok && responseData.refund) {
+          toast.success('Refund Successful', 'The refund was processed successfully.');
+        } else {
+          toast.error('Refund Failed', 'The refund process failed.');
+        }
+      } 
     } catch (error) {
       console.log(error);
     }
@@ -118,7 +147,6 @@ const BookedSlots = () => {
         Header: "plug",
         accessor: "col6",
       },
-
       {
         Header: "booked at",
         accessor: "col7",
@@ -181,6 +209,7 @@ console.log("ownerData",ownerData)
             id: bookingDoc.id,
             ...bookingDoc.data(),
           });
+          // console.log(bookingData);
         });
       }
 
@@ -220,7 +249,7 @@ console.log("ownerData",ownerData)
             columns={columns}
             data={data}
             loading={isFetchingData}
-            tableTitle={"Users Summery"}
+            tableTitle={"Users Summary"}
           />
         </div>
       </div>

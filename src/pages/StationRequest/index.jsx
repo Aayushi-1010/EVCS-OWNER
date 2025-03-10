@@ -36,7 +36,7 @@ const StationRequest = () => {
   const [stationDetails, setStationDetails] = useState({});
 
   const [isRejectModalOpen, setIsRejectModalOpen] = useState(false);
-  const [updateId, setUpdateId] = useState(null);
+  const [updateId, setUpdateId] = useState(null);        
   const [updateData, setUpdateData] = useState({});
   const [rejectId, setRejectId] = useState(null);
 
@@ -52,8 +52,8 @@ const StationRequest = () => {
   const handleStationRequestData = useCallback((initialData, data) => {
     data.forEach((item, ind) => {
       initialData.push({
-        col1: ind + 1,
-        col2: <Image src={item.stationImage} alt="" height={50} width={100} />,
+        col1: ind + 1, 
+        col2: <Image src={item.stationImage} alt="" height={50} width={100} />, 
         col3: item.stationName,
         col4: item.state,
         col5: item.city,
@@ -62,6 +62,7 @@ const StationRequest = () => {
             {name} {i !== item.plugs.length - 1 && ","}
           </p>
         )),
+        col11: item.price,
         col7: item.openTime,
         col8: item.closeTime,
         col9: (
@@ -167,6 +168,10 @@ const StationRequest = () => {
       {
         Header: "Plugs",
         accessor: "col6",
+      },
+      {
+        Header: "Price",
+        accessor: "col11",
       },
       {
         Header: "Open Time",
@@ -419,12 +424,12 @@ const StationRequest = () => {
               rules={[
                 {
                   required: true,
-                  message: "plugs is required",
+                  message: "Plugs are required",
                 },
               ]}
             >
               <Select
-                placeholder="Select City"
+                placeholder="Select Plugs"
                 mode="multiple"
                 onSelect={(city) => setSelectedCity(city)}
               >
@@ -435,6 +440,20 @@ const StationRequest = () => {
                 ))}
               </Select>
             </Form.Item>
+
+            <Form.Item
+              label="Price"
+              name="price"
+              rules={[
+                {
+                  required: true,
+                  message: "Price is required",
+                },
+              ]}
+            >
+              <Input type="number" placeholder="Enter Price" />
+            </Form.Item>
+
             <Form.Item
               label="Open Time"
               name="openTime"

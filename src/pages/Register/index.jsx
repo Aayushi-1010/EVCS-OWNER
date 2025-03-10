@@ -41,7 +41,7 @@ const Register = () => {
       } catch (error) {
         toast.error(error.message);
       } finally {
-        setLoading(false);
+        setLoading(false);  
       }
     },
     [addDocument, dispatch]

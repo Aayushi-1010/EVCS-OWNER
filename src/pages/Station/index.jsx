@@ -35,6 +35,7 @@ const Station = () => {
             {name} {i !== item.plugs.length - 1 && ","}
           </p>
         )),
+        col11: item.price,
         col7: item.openTime,
         col8: item.closeTime,
         col9: (
@@ -85,6 +86,10 @@ const Station = () => {
       {
         Header: "Plugs",
         accessor: "col6",
+      },
+      {
+        Header: "Price",
+        accessor: "col11",
       },
       {
         Header: "Open Time",
@@ -141,7 +146,7 @@ const Station = () => {
   const handleSubmit = async (values) => {
     setLoading(true);
     try {
-      console.log("values" ,values);
+      console.log("values" ,values);      
       if (!updateId) {
         await addDocument("stations", { ...values});
       } else {
@@ -251,7 +256,7 @@ const Station = () => {
             ]}
           >
             <Select
-              placeholder="Select City"
+              placeholder="Select Plugs"
               mode="multiple"
               onSelect={(city) => setSelectedCity(city)}
             >
@@ -263,6 +268,20 @@ const Station = () => {
                 ))}
             </Select>
           </Form.Item>
+
+          <Form.Item
+            label="Price"
+            name="price"
+            rules={[
+                    {
+                      required: true,
+                      message: "Price is required",
+                    },
+                   ]}
+          >
+            <Input type="number" placeholder="Enter Price" />
+          </Form.Item>
+
           <Form.Item
             label="Open Time"
             name="openTime"

@@ -11,7 +11,6 @@ import { LuIndianRupee } from "react-icons/lu";
 import style from "./dashboard.module.scss";
 import DashboardHeader from "../../Components/partial/dashboardHeader";
 import Modal from "../../Components/common/Modal";
-import RecentActivity from "./recentActivity";
 import useFirebaseContext from "../../hooks/firebase";
 import { analytics } from "../../firebase";
 
