@@ -9,6 +9,7 @@ import Button from "../../Components/common/Button";
 import { useSelector } from "react-redux";
 import useFirebaseContext from "../../hooks/firebase";
 import { toast } from "react-toastify";
+import { REFUND_API } from "../../environment";
 
 const BookedSlots = () => {
   const [slotsBookingData, setSlotsBookingData] = useState([]);
@@ -58,7 +59,7 @@ const BookedSlots = () => {
 
 
       if (data.paymentIntentId) {
-        const response = await fetch('http://localhost:3000/create-refund', {
+        const response = await fetch(`${REFUND_API}/create-refund`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

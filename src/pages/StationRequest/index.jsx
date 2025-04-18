@@ -21,6 +21,8 @@ import useFirebaseContext from "../../hooks/firebase";
 import { ALL_CITIES, CHARGING_PLUGS } from "../../constant";
 import style from "./station-request.module.scss";
 
+import { MAPS_JAVASCRIPT_API } from "../../environment";
+
 const STAUTS = {
   requested: "Requested",
   approved: "Approved",
@@ -490,7 +492,8 @@ const StationRequest = () => {
               {currentLocation && (
                 <GoogleMapReact
                   bootstrapURLKeys={{
-                    key: "AIzaSyAPxVr83wbDkDHrd9WYDb93J6vQ316_4TA",
+                    // key: "AIzaSyAPxVr83wbDkDHrd9WYDb93J6vQ316_4TA",
+                    key: MAPS_JAVASCRIPT_API,
                   }}
                   defaultCenter={currentLocation}
                   defaultZoom={18}
@@ -644,7 +647,8 @@ const StationRequest = () => {
           {currentLocation && (
             <GoogleMapReact
               bootstrapURLKeys={{
-                key: "AIzaSyAPxVr83wbDkDHrd9WYDb93J6vQ316_4TA",
+                // key: "AIzaSyAPxVr83wbDkDHrd9WYDb93J6vQ316_4TA",
+                key: MAPS_JAVASCRIPT_API,
               }}
               defaultCenter={{
                 lat: stationDetails.lat,
